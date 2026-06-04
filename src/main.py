@@ -4,7 +4,7 @@
 #
 # 강의 시간에 실습한 Linux 명령어를 활용하세요.
 def get_current_path_command():
-    raise NotImplementedError
+    return "pwd"    # 현재 셸이 위치한 디렉토리의 경로 확인표시
 
 
 # 문제 2.
@@ -21,7 +21,10 @@ def get_current_path_command():
 #
 # 강의 시간에 사용한 옵션을 활용하세요.
 def make_list_command(hidden):
-    raise NotImplementedError
+    if hidden:
+        return "ls -al"     # 숨김 파일과 상세정보까지 
+    else:
+        return "ls"         # 디렉토리의 일반(숨김x)파일만
 
 
 # 문제 3.
@@ -30,7 +33,7 @@ def make_list_command(hidden):
 #
 # path 인자는 이동할 디렉토리 경로입니다.
 def make_change_directory_command(path):
-    raise NotImplementedError
+    return f"cd {path}"
 
 
 # 문제 4.
@@ -41,22 +44,22 @@ def make_change_directory_command(path):
 #
 # 강의 중 확인한 U-Boot 명령어를 활용하세요.
 def make_printenv_command(env_name):
-    raise NotImplementedError
+    return f"printenv {env_name}"
 
 
-# 문제 5.
+# 문제 5. => 막히는 부분(구글링 + ai 검색)
 #
 # U-Boot bootargs 환경변수를 설정하는 명령어를 생성하세요.
 #
-# console 인자는 시리얼 콘솔 장치 이름입니다.
+# console 인자는 시리얼 콘솔 장치 이름입니다. (ttyUSB0)
 # rootfs 인자는 루트 파일시스템 장치 이름입니다.
 #
 # 생성되는 명령어에는 아래 정보가 포함되어야 합니다.
 #
-# - console
-# - root
-# - rw
+# - console         # 커널 부팅 메시지를 어느 콘솔로 출력할 지
+# - root            # 마운트할 루트 파일시스템 있는 장치를 지정
+# - rw              # 루트 파일 시스템을 '읽기'/'쓰기' 모드로 설정
 #
 # 강의 중 실습한 bootargs 형식을 참고하세요.
 def make_bootargs_command(console, rootfs):
-    raise NotImplementedError
+    return f"setenv bootargs console={console} root={rootfs} rw"
